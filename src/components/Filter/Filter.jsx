@@ -6,8 +6,8 @@ import { setFilter } from '../../redux/filterSlice'
 export const Filter = () => {
     const dispatch = useDispatch()
 
-    const handleInputChange = (event) => {
-        dispatch(setFilter(event.target.value))
+    const handleInputChange = (e) => {
+        dispatch(setFilter(e.target.value))
     }
 
     return (
