@@ -1,16 +1,11 @@
-.item {
-  color: royalblue;
-  margin: 5px 0;
-  font-size: 16px;
+.listEl {
+  margin-bottom: 10px;
 }
-.deleteBtn {
-  width: 100px;
-  background-color: royalblue;
-  color: white;
-  border: 1px solid rgb(250, 250, 250);
-  border-radius: 5px;
-  padding: 3px;
+
+.delButton {
+  margin-left: 10px;
   cursor: pointer;
-  margin-top: 5px;
-  margin-left: 20px;
+  background-color: white;
+  border: 1px solid gainsboro;
+  border-radius: 5px;
 }

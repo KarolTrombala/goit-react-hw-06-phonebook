@@ -26,19 +26,19 @@ export const ContactList = () => {
   }
 
   return (
-    <ul>
-      {filteredContacts.map((n) => (
-        <li className={css.item} key={n.id}>
-          {n.name}: {n.number}
-          <button
-            className={css.deleteBtn}
-            type="submit"
-            onClick={() => delContact(n.id)}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+      <ul>
+          {filteredContacts.map((n) => (
+              <li key={n.id} className={css.listEl}>
+                  {n.name}: {n.number}
+                  <button
+                      className={css.delButton}
+                      type="submit"
+                      onClick={() => delContact(n.id)}
+                  >
+                      Delete
+                  </button>
+              </li>
+          ))}
+      </ul>
   )
 };
