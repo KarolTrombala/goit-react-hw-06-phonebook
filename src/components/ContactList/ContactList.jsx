@@ -1,30 +1,44 @@
 import css from './ContactList.module.css'
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux'
 
-export const ContactList = ({ contacts, onClick }) => {
-  const handleDelete = (id) => onClick(id.target.value)
+import { getFilter, getContacts } from '../../redux/selectors'
+import { deleteContact } from '../../redux/contactsSlice'
 
-  return (
-    <ul>
-      {contacts.map((contact) => {
-        return (
-          <li key={contact.id} className={css.listEl}>
-            {contact.name}: {contact.number}
-            <button
-              type="submit"
-              value={contact.id}
-              onClick={handleDelete}
-              className={css.delButton}
-            >
-              Delete
-            </button>
-          </li>
-        )
-      })}
-    </ul>
-  )
-};
+export const ContactList = () => {
+    const contacts = useSelector(getContacts)
+    const filter = useSelector(getFilter)
+    const dispatch = useDispatch()
 
-ContactList.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
+    const getFilteredContacts = (contacts, filter) => {
+        if (filter === '') {
+            return contacts
+        } else {
+            return contacts.filter((contact) =>
+                contact.name.toLowerCase().includes(filter.toLowerCase())
+            )
+        }
+    }
+
+    const filteredContacts = getFilteredContacts(contacts, filter)
+
+    const delContact = (id) => {
+        dispatch(deleteContact(id))
+    }
+
+    return (
+        <ul>
+            {filteredContacts.map((n) => (
+              <li className={css.item} key={n.id}>
+                    {n.name}: {n.number}
+                    <button
+                  className={css.deleteBtn}
+                        type="submit"
+                        onClick={() => delContact(n.id)}
+                    >
+                        Delete
+                    </button>
+                </li>
+            ))}
+        </ul>
+    )
+}

@@ -1,18 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux'
 
-export const Filter = ({ filteredList }) => {
-  const handleInputChange = (e) => {
-    filteredList(e.target.value);
-  };
-  return (
-    <>
-      <p>Find contacts by name</p>
-      <input onChange={handleInputChange} />
-    </>
-  );
-};
+import { setFilter } from '../../redux/filterSlice'
 
-Filter.propTypes = {
-  ilteredList: PropTypes.func,
-};
+export const Filter = () => {
+    const dispatch = useDispatch()
+
+    const handleInputChange = (event) => {
+        dispatch(setFilter(event.target.value))
+    }
+
+    return (
+        <div>
+            <p>Find contacts by name</p>
+            <input
+                className="filter"
+                name="filter"
+                onChange={handleInputChange}
+            />
+        </div>
+    )
+}
