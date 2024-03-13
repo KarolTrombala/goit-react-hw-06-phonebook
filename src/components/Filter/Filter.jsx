@@ -14,8 +14,6 @@ export const Filter = () => {
     <div>
       <p>Find contacts by name</p>
       <input
-        className="filter"
-        name="filter"
         onChange={handleInputChange}
       />
     </div>
