@@ -29,7 +29,7 @@ const contactsSlice = createSlice({
             localStorage.setItem('Contacts', JSON.stringify(state))
         },
     },
-})
+});
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
